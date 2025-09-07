@@ -51,6 +51,12 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
+    "links": [
+      {
+        "name": "Community",
+        "href": "https://github.com/shadi-fsai/a1facts/discussions"
+      }
+    ],
     "primary": {
       "type": "github",
       "href": "https://github.com/shadi-fsai/a1facts"
