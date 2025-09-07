@@ -1,0 +1,51 @@
+---
+title: "KnowledgeAcquirer"
+description: "The `KnowledgeAcquirer` class is responsible for enriching and updating the knowledge graph with validated information from various knowledge sources."
+---
+
+The `KnowledgeAcquirer` class uses an agent to interact with defined knowledge sources, acquire new information, and update the knowledge graph.
+
+### `__init__(self, graph: KnowledgeGraph, ontology: KnowledgeOntology, knowledge_sources_config_file: str)`
+
+Initializes a new instance of the `KnowledgeAcquirer` class.
+
+<RequestExample>
+```python
+from a1facts.enrichment import KnowledgeAcquirer
+from a1facts.graph import KnowledgeGraph
+from a1facts.ontology import KnowledgeOntology
+
+ontology = KnowledgeOntology(ontology_file="ontology.yaml")
+kg = KnowledgeGraph(ontology=ontology)
+acquirer = KnowledgeAcquirer(
+    graph=kg,
+    ontology=ontology,
+    knowledge_sources_config_file="sources.yaml"
+)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `graph` (KnowledgeGraph): The knowledge graph to be updated.
+-   `ontology` (KnowledgeOntology): The ontology that defines the structure of the knowledge graph.
+-   `knowledge_sources_config_file` (str): The path to the YAML file that configures the knowledge sources.
+
+### `acquire(self, query: str)`
+
+Executes a query to acquire new knowledge from the configured sources.
+
+<RequestExample>
+```python
+result = acquirer.acquire("Find the latest financial report for Apple Inc.")
+print(result)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `query` (str): The query to guide the knowledge acquisition process.
+
+**Returns:**
+
+-   The content of the agent's response as a string.

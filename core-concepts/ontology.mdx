@@ -1,0 +1,70 @@
+---
+title: "Ontology"
+description: "The ontology is the backbone of your knowledge graph. It defines the schema for your data."
+---
+
+The ontology is a declarative `YAML` file that defines the structure of your knowledge graph. It specifies the types of entities and relationships that can exist in your graph. This allows `a1facts` to validate incoming data and to construct queries.
+
+### Example
+
+Here is an example of an ontology for financial analysis, taken from the [Stock Analysis](/cookbook/stock-analysis) cookbook example.
+
+```yaml
+name: company_info
+description: "Ontology for company information"
+entities:
+  - name: Company
+    description: "A company"
+    properties:
+      - name: name
+        type: string
+        description: "The name of the company"
+      - name: ticker
+        type: string
+        description: "The stock ticker of the company"
+      - name: description
+        type: string
+        description: "A description of the company"
+  - name: Product_Service
+    description: "A product or service offered by a company"
+    properties:
+      - name: name
+        type: string
+        description: "The name of the product or service"
+  - name: Market
+    description: "A market that a company operates in"
+    properties:
+      - name: name
+        type: string
+        description: "The name of the market"
+relationships:
+  - name: competes_with
+    description: "A company competes with another company"
+    domain: Company
+    range: Company
+  - name: offers
+    description: "A company offers a product or service"
+    domain: Company
+    range: Product_Service
+  - name: operates_in
+    description: "A company operates in a market"
+    domain: Company
+    range: Market
+```
+
+### Key Concepts
+
+-   `name`: The name of the ontology.
+-   `description`: A description of the ontology.
+-   `entities`: A list of entity types.
+    -   `name`: The name of the entity type.
+    -   `description`: A description of the entity type.
+    -   `properties`: A list of properties for the entity type.
+        -   `name`: The name of the property.
+        -   `type`: The data type of the property.
+        -   `description`: A description of the property.
+-   `relationships`: A list of relationship types.
+    -   `name`: The name of the relationship type.
+    -   `description`: A description of the relationship type.
+    -   `domain`: The source entity type of the relationship.
+    -   `range`: The target entity type of the relationship.

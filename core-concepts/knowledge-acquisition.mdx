@@ -1,0 +1,16 @@
+---
+title: "Knowledge Acquisition"
+description: "Knowledge acquisition is the process of ingesting data from external sources and structuring it according to your ontology."
+---
+
+Knowledge acquisition is the process of populating your knowledge graph with data from various sources. `a1facts` provides a framework for defining knowledge sources and acquiring data from them.
+
+### Knowledge Sources
+
+You can define knowledge sources in a `YAML` file. These sources can be anything from APIs to web pages to local documents. For each source, you can specify how to extract information and map it to the entities and relationships in your ontology.
+
+### The `acquire_tool`
+
+The `acquire_tool` (see [API Reference](/api-reference/knowledge-base)) is used to trigger the knowledge acquisition process. When an agent needs information that is not yet in the knowledge graph, it can use the `acquire_tool` to fetch it from the configured knowledge sources.
+
+The acquired data is then validated against the ontology and ingested into the knowledge graph, making it available for future queries. This allows your knowledge graph to grow and evolve over time as new information becomes available.

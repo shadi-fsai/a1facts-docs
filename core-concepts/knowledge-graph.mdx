@@ -1,0 +1,16 @@
+---
+title: "Knowledge Graph"
+description: "The knowledge graph is a dynamic, queryable database of your structured information."
+---
+
+The knowledge graph is where your structured data, defined by the ontology, is stored. `a1facts` uses a graph database to store entities and their relationships, allowing for complex queries and analysis.
+
+### Neo4j Backend
+
+`a1facts` supports [Neo4j](https://neo4j.com/) as a backend for the knowledge graph. When you initialize a `KnowledgeBase` with `use_neo4j=True`, `a1facts` will connect to your Neo4j instance and store the data there. This provides a robust and scalable solution for managing your knowledge base.
+
+### Querying the Graph
+
+The knowledge graph can be queried using natural language. When an agent receives a query, it uses the `query_tool` (see [API Reference](/api-reference/knowledge-base)) to translate the natural language query into a graph traversal. The results are then returned to the agent.
+
+This process ensures that the agent's responses are grounded in the factual data stored in the knowledge graph, eliminating hallucinations and providing precise, verifiable answers.

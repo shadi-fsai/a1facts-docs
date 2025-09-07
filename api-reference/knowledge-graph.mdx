@@ -1,0 +1,74 @@
+---
+title: "KnowledgeGraph"
+description: "The `KnowledgeGraph` class manages interactions with the graph database."
+---
+
+The `KnowledgeGraph` class is responsible for adding, updating, and querying entities and relationships in the graph database, based on a provided ontology.
+
+### `__init__(self, ontology: KnowledgeOntology, use_neo4j: bool = False)`
+
+Initializes a new instance of the `KnowledgeGraph` class.
+
+<RequestExample>
+```python
+from a1facts.graph import KnowledgeGraph
+from a1facts.ontology import KnowledgeOntology
+
+ontology = KnowledgeOntology(ontology_file="ontology.yaml")
+kg = KnowledgeGraph(ontology=ontology, use_neo4j=False)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `ontology` (KnowledgeOntology): The ontology defining the graph's structure.
+-   `use_neo4j` (bool, optional): Whether to use Neo4j as the backend. Defaults to `False`.
+
+### `query(self, query: str)`
+
+Executes a natural language query against the knowledge graph.
+
+<RequestExample>
+```python
+result = kg.query("what do you know about how UnitedHealth competes with CVS?")
+print(result)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `query` (str): The natural language query to execute.
+
+**Returns:**
+
+-   The content of the agent's response as a string.
+
+### `update_knowledge(self, knowledge: str)`
+
+Updates the knowledge graph with new, unstructured information.
+
+<RequestExample>
+```python
+knowledge_to_add = "UnitedHealth Group is a diversified health and well-being company."
+result = kg.update_knowledge(knowledge_to_add)
+print(result)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `knowledge` (str): A string of unstructured knowledge to add to the graph.
+
+**Returns:**
+
+-   The content of the agent's response as a string.
+
+### `close(self)`
+
+Closes the connection to the graph database.
+
+<RequestExample>
+```python
+kg.close()
+```
+</RequestExample>

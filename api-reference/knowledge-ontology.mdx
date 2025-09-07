@@ -1,0 +1,105 @@
+---
+title: "KnowledgeOntology"
+description: "The `KnowledgeOntology` class represents the entire ontology, including all entity and relationship classes."
+---
+
+The `KnowledgeOntology` class loads the ontology from a YAML file and provides methods to access its components.
+
+### `__init__(self, ontology_file: str)`
+
+Initializes a new instance of the `KnowledgeOntology` class.
+
+<RequestExample>
+```python
+from a1facts.ontology import KnowledgeOntology
+
+ontology = KnowledgeOntology(ontology_file="ontology.yaml")
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `ontology_file` (str): The path to the YAML file defining the ontology.
+
+### `find_entity_class(self, name: str)`
+
+Finds an entity class by name.
+
+<RequestExample>
+```python
+company_class = ontology.find_entity_class("Company")
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `name` (str): The name of the entity class to find.
+
+**Returns:**
+
+-   An `EntityClass` object or `None` if not found.
+
+### `get_add_or_update_tools(self, add_entity_func, add_relationship_func)`
+
+Gets a combined list of all add/update tools for both entities and relationships. These tools are used by agents to modify the knowledge graph.
+
+<RequestExample>
+```python
+# These functions would typically be methods of the KnowledgeGraph class
+def add_entity(entity_data):
+    pass
+
+def add_relationship(relationship_data):
+    pass
+
+tools = ontology.get_add_or_update_tools(add_entity, add_relationship)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `add_entity_func` (function): The function to call to add/update an entity.
+-   `add_relationship_func` (function): The function to call to add/update a relationship.
+
+**Returns:**
+
+-   A list of all add/update tool functions.
+
+### `get_get_tools(self, get_all_entity_func, get_entity_properties_func, get_relationship_properties_func, get_relationship_entities_func)`
+
+Gets a combined list of all "get" tools for both entities and relationships. These tools are used by agents to query the knowledge graph.
+
+<RequestExample>
+```python
+# These functions would typically be methods of the KnowledgeGraph class
+def get_all_entities(entity_type):
+    pass
+
+def get_entity_properties(entity_id):
+    pass
+
+def get_relationship_properties(rel_id):
+    pass
+
+def get_relationship_entities(rel_id):
+    pass
+
+tools = ontology.get_get_tools(
+    get_all_entities,
+    get_entity_properties,
+    get_relationship_properties,
+    get_relationship_entities
+)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `get_all_entity_func` (function): Function to get all entities of a certain type.
+-   `get_entity_properties_func` (function): Function to get the properties of an entity.
+-   `get_relationship_properties_func` (function): Function to get the properties of a relationship.
+-   `get_relationship_entities_func` (function): Function to get the entities connected by a relationship.
+
+**Returns:**
+
+-   A list of all "get" tool functions.
