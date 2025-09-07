@@ -9,27 +9,41 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "Getting Started": [
-      "index",
-      "quickstart",
-      "development"
-    ],
-    "Core Concepts": [
-      "core-concepts/ontology",
-      "core-concepts/knowledge-graph",
-      "core-concepts/knowledge-acquisition"
-    ],
-    "Cookbook": [
-      "cookbook/stock-analysis",
-      "cookbook/clinical-trials",
-      "cookbook/vc-analysis"
-    ],
-    "API Reference": [
-      "api-reference/introduction",
-      "api-reference/knowledge-base",
-      "api-reference/knowledge-ontology",
-      "api-reference/knowledge-graph",
-      "api-reference/knowledge-acquirer"
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "index",
+          "quickstart",
+          "development"
+        ]
+      },
+      {
+        "group": "Core Concepts",
+        "pages": [
+          "core-concepts/ontology",
+          "core-concepts/knowledge-graph",
+          "core-concepts/knowledge-acquisition"
+        ]
+      },
+      {
+        "group": "Cookbook",
+        "pages": [
+          "cookbook/stock-analysis",
+          "cookbook/clinical-trials",
+          "cookbook/vc-analysis"
+        ]
+      },
+      {
+        "group": "API Reference",
+        "pages": [
+          "api-reference/introduction",
+          "api-reference/knowledge-base",
+          "api-reference/knowledge-ontology",
+          "api-reference/knowledge-graph",
+          "api-reference/knowledge-acquirer"
+        ]
+      }
     ]
   },
   "logo": {
