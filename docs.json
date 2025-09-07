@@ -54,7 +54,7 @@
   "navbar": {
     "links": [
       {
-        "name": "Community",
+        "label": "Community",
         "href": "https://github.com/shadi-fsai/a1facts/discussions"
       }
     ],
