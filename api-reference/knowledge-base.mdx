@@ -1,0 +1,68 @@
+---
+title: "KnowledgeBase"
+description: "The main class for interacting with the a1facts knowledge base."
+---
+
+The `KnowledgeBase` class is the main entry point for using `a1facts`.
+
+### `__init__(self, name: str, ontology_config_file: str, knowledge_sources_config_file: str, use_neo4j: bool = False)`
+
+Initializes a new instance of the `KnowledgeBase` class.
+
+<RequestExample>
+```python
+from a1facts import KnowledgeBase
+
+kb = KnowledgeBase(
+    name="my-knowledge-base",
+    ontology_config_file="ontology.yaml",
+    knowledge_sources_config_file="sources.yaml",
+    use_neo4j=False
+)
+```
+</RequestExample>
+
+**Parameters:**
+
+-   `name` (str): The name of the knowledge base.
+-   `ontology_config_file` (str): The path to the ontology configuration file.
+-   `knowledge_sources_config_file` (str): The path to the knowledge sources configuration file.
+-   `use_neo4j` (bool, optional): Whether to use Neo4j as the backend. Defaults to `False`.
+
+### `get_tools(self)`
+
+Returns a list of tools that can be used by an agent to interact with the knowledge base.
+
+<RequestExample>
+```python
+tools = kb.get_tools()
+```
+</RequestExample>
+
+**Returns:**
+
+-   A list of two functions: `query_tool` and `acquire_tool`.
+
+#### `query_tool(query: str)`
+
+Queries the knowledge graph for precise information.
+
+**Parameters:**
+
+-   `query` (str): The query to send to the knowledge graph.
+
+**Returns:**
+
+-   The result from the knowledge graph.
+
+#### `acquire_tool(query: str)`
+
+Acquires knowledge from the configured knowledge sources and updates the knowledge graph.
+
+**Parameters:**
+
+-   `query` (str): The query to send to the knowledge acquirer.
+
+**Returns:**
+
+-   The result from the knowledge acquirer.

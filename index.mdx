@@ -1,97 +1,40 @@
 ---
 title: "Introduction"
-description: "Welcome to the new home for your documentation"
+description: "a1facts: The precision layer for AI"
 ---
 
-## Setting up
+a1facts is a powerful Python framework that acts as a verifiable knowledge layer for factual, precise AI. It allows you to define a clear structure (ontology) for your domain, ingest verifiyable information from various sources, and use natural language to get precise, reliable answers. By grounding your AI agents in a structured knowledge graph, a1facts helps eliminate hallucinations and ensures that your agent's responses are based on verified facts.
 
-Get your documentation site up and running in minutes.
+This project supports a Neo4j backend to manage and query the graph data, providing a robust and scalable solution for your knowledge management needs.
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+<img src="/images/Architecture.png" />
 
-## Make it yours
+## Key Features
 
-Design a docs site that looks great and empowers your users.
+-   **Ontology-Driven**: Define your knowledge domain with simple YAML files. a1facts uses this ontology to automatically create the tools and structures needed to interact with your data.
+-   **Verifiable Ingestion**: Convert unstructured knowledge into structured entities and relationships within your knowledge graph, ensuring data quality and consistency.
+-   **Natural Language Queries**: Ask questions in plain English. a1facts translates your queries into precise graph traversals to retrieve the information you need.
+-   **Reliable AI Agents**: Build AI agents that can provide accurate and trustworthy answers by grounding them in the factual data of the knowledge graph.
+-   **Neo4j Backend**: Supports Neo4j for efficient storage and complex querying of your knowledge base.
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+## Usage Scenario: Building AI Agents with Precise Answers
 
-## Create beautiful pages
+In many applications, it's critical for AI agents to provide answers that are not just plausible but also precise and factually correct. Standard large language models (LLMs) can sometimes "hallucinate" or generate incorrect information, which can be a major issue in domains like finance, legal, or scientific research.
 
-Everything you need to create world-class documentation.
+a1facts addresses this problem by grounding your AI agent in a knowledge graph. Here's how it works:
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+1.  **Define Your Domain**: You start by creating an ontology that describes the key concepts and relationships in your specific domain. For example, in finance, you might define entities like `Company`, `Product`, and `Market`, and relationships like `competes_with` or `operates_in`.
 
-## Need inspiration?
+    <img src="/images/Onto_example.png" />
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+2.  **Populate the Graph**: You then ingest data from different sources into the knowledge graph. This could be from internal documents, databases, external APIs, or the web. a1facts ensures that this data is structured according to your ontology, but also that it's factual by triangulating facts from different sources.
+
+    <img src="/images/example_KG.png" />
+
+3.  **Query with Confidence**: When your AI agent receives a question, it doesn't just rely on its internal training data. Instead, it uses a1facts to query the knowledge graph. This means the agent's answers are based on the structured, verified data.
+
+    <img src="/images/Query_example.jpeg" />
+
+By using a1facts, you can build an AI agent that is not only intelligent but also trustworthy, providing precise and reliable answers every time.
+
+a1facts is a work in progress, we'd love to hear from you on how you're using it and what you need it to do next.

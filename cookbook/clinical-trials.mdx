@@ -1,0 +1,37 @@
+---
+title: "Clinical Trials Agent"
+description: "This example demonstrates how to use `a1facts` to build an agent that can answer questions about clinical trials."
+---
+
+This agent can answer questions about clinical trials by using a knowledge graph and external data sources.
+
+### How it Works
+
+The agent is built using the following components:
+
+-   **`trialsagent.py`**: The main script that creates and runs the agent. It initializes the `a1facts` tool, which acts as the bridge between the agent and the knowledge graph.
+-   **`trials.yaml`**: This file defines the schema of our knowledge graph. It specifies the types of entities (e.g., `ClinicalTrial`, `Drug`, `Condition`) and the relationships between them.
+-   **`sources.yaml`**: This file configures the external data sources.
+
+When you run `trialsagent.py`, it initializes an agent with the `a1facts` tool. The agent is then asked a complex query about clinical trials. The `a1facts` tool uses the information from the `trials.yaml` and `sources.yaml` to understand the query, fetch relevant data, and then provides an answer.
+
+### Running the Example
+
+1.  **Set up your environment:**
+
+    Create a `.env` file in the root of this project and add your 
+
+    ```
+    OPENAI_API_KEY=
+    EXA_API_KEY=
+    ```
+
+2.  **Run the agent:**
+
+    Navigate to the `a1facts/cookbook/clinical_trials` directory and run the following command:
+
+    ```bash
+    uv run trialsagent.py
+    ```
+
+This will run the agent and print the answer to the query in the console.

@@ -1,33 +1,17 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API Reference"
+description: "The `a1facts` library provides a `KnowledgeBase` class as the main entry point for interacting with the knowledge graph."
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+The `KnowledgeBase` class is the primary interface for working with `a1facts`. It encapsulates the ontology, the knowledge graph, and the knowledge acquirer.
 
-## Welcome
+### Core Concepts
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+-   **KnowledgeBase**: The main class that provides access to all the functionalities of `a1facts`.
+-   **Ontology**: Defines the schema of your knowledge graph.
+-   **Knowledge Graph**: Stores and manages your structured data.
+-   **Knowledge Acquirer**: Fetches and ingests data from external sources.
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+### Getting Started
 
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+To start using `a1facts`, you first need to create an instance of the `KnowledgeBase` class.
