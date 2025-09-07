@@ -50,10 +50,10 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "topbarLinks": [
-    {
-      "name": "GitHub ★ 37",
-      "url": "https://github.com/shadi-fsai/a1facts"
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/shadi-fsai/a1facts"
     }
-  ]
+  }
 }
