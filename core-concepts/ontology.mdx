@@ -3,13 +3,15 @@ title: "Ontology"
 description: "The ontology is the backbone of your knowledge graph. It defines the schema for your data."
 ---
 
-The ontology is a declarative `YAML` file that defines the structure of your knowledge graph. It specifies the types of entities and relationships that can exist in your graph. This allows `a1facts` to validate incoming data and to construct queries.
+The ontology is a declarative `YAML` file that defines the structure of your knowledge graph. It specifies the types of entities and relationships that can exist in your graph, acting as a schema to ensure data consistency and to guide the query generation process.
 
-### Example
+By defining a clear and explicit ontology, you enable `a1facts` to validate incoming data and construct precise queries.
+
+## Example
 
 Here is an example of an ontology for financial analysis, taken from the [Stock Analysis](/cookbook/stock-analysis) cookbook example.
 
-```yaml
+```yaml company.yaml
 name: company_info
 description: "Ontology for company information"
 entities:
@@ -52,19 +54,65 @@ relationships:
     range: Market
 ```
 
-### Key Concepts
+## Key Concepts
 
--   `name`: The name of the ontology.
--   `description`: A description of the ontology.
--   `entities`: A list of entity types.
-    -   `name`: The name of the entity type.
-    -   `description`: A description of the entity type.
-    -   `properties`: A list of properties for the entity type.
-        -   `name`: The name of the property.
-        -   `type`: The data type of the property.
-        -   `description`: A description of the property.
--   `relationships`: A list of relationship types.
-    -   `name`: The name of the relationship type.
-    -   `description`: A description of the relationship type.
-    -   `domain`: The source entity type of the relationship.
-    -   `range`: The target entity type of the relationship.
+The ontology is defined by the following key concepts, which are organized into a hierarchical structure in the YAML file.
+
+<AccordionGroup>
+    <Accordion title="`name`">
+        **Type:** `string`
+        
+        The top-level name of the ontology, used to identify it.
+    </Accordion>
+    <Accordion title="`description`">
+        **Type:** `string`
+        
+        A brief description of the ontology's purpose and scope.
+    </Accordion>
+    <Accordion title="`entities`">
+        **Type:** `list`
+        
+        A list of entity types that can exist in the knowledge graph. Each entity represents a class of objects.
+        <Expandable title="Entity Properties">
+            <ResponseField name="name" type="string" required>
+                The name of the entity type (e.g., `Company`, `Product_Service`).
+            </ResponseField>
+            <ResponseField name="description" type="string">
+                A short description of the entity type.
+            </ResponseField>
+            <ResponseField name="properties" type="list">
+                A list of properties associated with the entity type. Each property defines an attribute of the entity.
+                <Expandable title="Property Attributes">
+                    <ResponseField name="name" type="string" required>
+                        The name of the property (e.g., `ticker`, `description`).
+                    </ResponseField>
+                    <ResponseField name="type" type="string" required>
+                        The data type of the property (e.g., `string`, `integer`).
+                    </ResponseField>
+                    <ResponseField name="description" type="string">
+                        A description of the property.
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+        </Expandable>
+    </Accordion>
+    <Accordion title="`relationships`">
+        **Type:** `list`
+        
+        A list of relationship types that define how entities can be connected.
+        <Expandable title="Relationship Properties">
+            <ResponseField name="name" type="string" required>
+                The name of the relationship type (e.g., `competes_with`, `offers`).
+            </ResponseField>
+            <ResponseField name="description" type="string">
+                A short description of what the relationship represents.
+            </ResponseField>
+            <ResponseField name="domain" type="string" required>
+                The source entity type of the relationship.
+            </ResponseField>
+            <ResponseField name="range" type="string" required>
+                The target entity type of the relationship.
+            </ResponseField>
+        </Expandable>
+    </Accordion>
+</AccordionGroup>

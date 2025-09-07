@@ -3,14 +3,25 @@ title: "Knowledge Acquisition"
 description: "Knowledge acquisition is the process of ingesting data from external sources and structuring it according to your ontology."
 ---
 
-Knowledge acquisition is the process of populating your knowledge graph with data from various sources. `a1facts` provides a framework for defining knowledge sources and acquiring data from them.
+Knowledge acquisition is the process of populating your knowledge graph with data from various sources. `a1facts` provides a flexible framework for defining knowledge sources and ingesting data from them, ensuring that your knowledge graph remains up-to-date and comprehensive.
 
-### Knowledge Sources
+## Knowledge Sources
 
-You can define knowledge sources in a `YAML` file. These sources can be anything from APIs to web pages to local documents. For each source, you can specify how to extract information and map it to the entities and relationships in your ontology.
+You can define knowledge sources in a `YAML` file. These sources can be anything from APIs to web pages to local documents. For each source, you specify how to extract information and map it to the entities and relationships in your ontology. This declarative approach makes it easy to add new sources and adapt to changing data formats.
 
-### The `acquire_tool`
+<Info>
+  Check out the [Stock Analysis](/cookbook/stock-analysis) cookbook for an example of how to define and use knowledge sources.
+</Info>
+
+## The `acquire_tool`
 
 The `acquire_tool` (see [API Reference](/api-reference/knowledge-base)) is used to trigger the knowledge acquisition process. When an agent needs information that is not yet in the knowledge graph, it can use the `acquire_tool` to fetch it from the configured knowledge sources.
 
-The acquired data is then validated against the ontology and ingested into the knowledge graph, making it available for future queries. This allows your knowledge graph to grow and evolve over time as new information becomes available.
+<RequestExample>
+```python
+# Example of an agent acquiring new knowledge
+agent.run("Acquire information about Microsoft's latest products.")
+```
+</RequestExample>
+
+The acquired data is then validated against the ontology and ingested into the knowledge graph, making it available for future queries. This allows your knowledge graph to grow and evolve over time as new information becomes available, creating a virtuous cycle of knowledge enrichment.

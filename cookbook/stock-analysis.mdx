@@ -1,38 +1,52 @@
 ---
 title: "Stock Analysis Agent"
-description: "This example demonstrates how to use `a1facts` to build a simple financial analyst agent."
+description: "This example demonstrates how to use `a1facts` to build a simple financial analyst agent that can answer questions about companies."
 ---
 
-This agent can answer questions about companies by using a knowledge graph and external data sources.
+This agent uses a knowledge graph and external data sources to provide informed answers about companies, their competitors, and their products.
 
-### How it Works
+## How it Works
 
-The agent is built using the following components:
+The agent is built using the following components, which you can find in the `cookbook/stock_analysis` directory:
 
--   **`infoagent.py`**: The main script that creates and runs the agent. It initializes the `a1facts` tool, which acts as the bridge between the agent and the knowledge graph.
--   **`company.yaml`**: This file defines the schema of our knowledge graph. It specifies the types of entities (e.g., `Company`, `Product_Service`, `Market`) and the relationships between them (e.g., `competes_with`, `operates_in`).
--   **`sources.yaml`**: This file configures the external data sources. In this case, it's set up to use the Financial Modeling Prep (FMP) API.
--   **`yfinance_functions.py`**: This file contains the Python functions that interact with the yfinance API to fetch data.
+<CardGroup>
+    <Card title="`infoagent.py`" icon="robot">
+        The main script that creates and runs the agent. It initializes the `a1facts` tool, which acts as the bridge between the agent and the knowledge graph.
+    </Card>
+    <Card title="`company.yaml`" icon="sitemap">
+        This file defines the schema of our knowledge graph. It specifies the types of entities (e.g., `Company`, `Product_Service`) and the relationships between them (e.g., `competes_with`).
+    </Card>
+    <Card title="`sources.yaml`" icon="cloud-download">
+        This file configures the external data sources. In this case, it's set up to use the Financial Modeling Prep (FMP) API and yfinance.
+    </Card>
+    <Card title="`fmp_functions.py` & `yfinance_functions.py`" icon="code">
+        These files contain the Python functions that interact with the FMP and yfinance APIs to fetch data.
+    </Card>
+</CardGroup>
 
-When you run `infoagent.py`, it initializes an agent with the `a1facts` tool. The agent is then asked a question: `"what do you know about how UnitedHealth competes with CVS?"`. The `a1facts` tool uses the information from the `company.yaml` and `sources.yaml` to understand the query, fetch relevant data from the FMP API using the functions in `fmp_functions.py`, and then provides an answer.
+When you run `infoagent.py`, it initializes an agent with the `a1facts` tool. The agent is then asked a question: `"what do you know about how UnitedHealth competes with CVS?"`. The `a1facts` tool uses the information from `company.yaml` and `sources.yaml` to understand the query, fetch relevant data from the external APIs, and then provide a precise answer.
 
-### Running the Example
+## Running the Example
 
-1.  **Set up your environment:**
-
-    Create a `.env` file in the root of this project and add your 
-
-    ```
-    OPENAI_API_KEY=
-    EXA_API_KEY=
-    ```
-
-2.  **Run the agent:**
-
-    Navigate to the `a1facts/cookbook/stock_analysis` directory and run the following command:
-
-    ```bash
-    uv run infoagent.py
-    ```
-
-This will run the agent and print the answer to the query in the console.
+<Steps>
+    <Step title="Set up your environment">
+        Create a `.env` file in the `a1facts/cookbook/stock_analysis` directory and add your API keys:
+        ```dotenv .env
+        OPENAI_API_KEY="your_openai_api_key"
+        EXA_API_KEY="your_exa_api_key"
+        FMP_API_KEY="your_fmp_api_key"
+        ```
+        <Warning>
+            You will need to sign up for a free API key from [Financial Modeling Prep](https://site.financialmodelingprep.com/developer/docs) to run this example.
+        </Warning>
+    </Step>
+    <Step title="Run the agent">
+        Navigate to the `a1facts/cookbook/stock_analysis` directory and run the following command:
+        ```bash
+        uv run python infoagent.py
+        ```
+    </Step>
+    <Step title="Expected Output">
+        The agent will run the query and print the answer to the console. The output will be a detailed explanation of how UnitedHealth competes with CVS, based on the data retrieved from the knowledge graph and external sources.
+    </Step>
+</Steps>

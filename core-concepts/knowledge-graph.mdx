@@ -1,16 +1,32 @@
 ---
 title: "Knowledge Graph"
-description: "The knowledge graph is a dynamic, queryable database of your structured information."
+description: "The knowledge graph is a dynamic, queryable database of your structured information, designed to be accessed through natural language."
 ---
 
-The knowledge graph is where your structured data, defined by the ontology, is stored. `a1facts` uses a graph database to store entities and their relationships, allowing for complex queries and analysis.
+The knowledge graph is where your structured data, defined by the ontology, is stored. `a1facts` uses a graph database to store entities and their relationships, allowing for complex queries and analysis. It is the central repository of factual information that your AI agents can rely on.
 
-### Neo4j Backend
+## Querying the Graph
 
-`a1facts` supports [Neo4j](https://neo4j.com/) as a backend for the knowledge graph. When you initialize a `KnowledgeBase` with `use_neo4j=True`, `a1facts` will connect to your Neo4j instance and store the data there. This provides a robust and scalable solution for managing your knowledge base.
+The primary way to interact with the knowledge graph is through natural language queries. When an agent receives a query, it uses the `query_tool` (see [API Reference](/api-reference/knowledge-base)) to translate the natural language query into a precise graph traversal. The results are then returned to the agent.
 
-### Querying the Graph
-
-The knowledge graph can be queried using natural language. When an agent receives a query, it uses the `query_tool` (see [API Reference](/api-reference/knowledge-base)) to translate the natural language query into a graph traversal. The results are then returned to the agent.
+<RequestExample>
+```python
+# Example of an agent querying the knowledge graph
+result = agent.run("What products does Apple offer?")
+```
+</RequestExample>
+<ResponseExample>
+```text
+Apple offers the following products: iPhone, iPad, Mac.
+```
+</ResponseExample>
 
 This process ensures that the agent's responses are grounded in the factual data stored in the knowledge graph, eliminating hallucinations and providing precise, verifiable answers.
+
+## Neo4j Backend
+
+For robust and scalable deployments, `a1facts` supports [Neo4j](https://neo4j.com/) as a backend for the knowledge graph. 
+
+<Tip>
+When you initialize a `KnowledgeBase` with `use_neo4j=True`, `a1facts` will connect to your Neo4j instance and store the data there. This is the recommended approach for production environments or large datasets. If `use_neo4j` is `False`, an in-memory graph will be used by default.
+</Tip>

@@ -1,11 +1,19 @@
 ---
 title: "VC Analysis"
-description: "This example provides the building blocks for creating a VC analysis agent."
+description: "This example provides the building blocks for creating a Venture Capital (VC) analysis agent."
 ---
 
-This example provides the building blocks for creating a VC analysis agent. It is not a runnable example, but it contains the `yaml` files that define the ontology and data sources.
+This example provides the `YAML` files that define the ontology and data sources for a VC analysis agent. While this is not a runnable example, it serves as a starting point for building an agent that can track companies, investors, and funding rounds.
 
-### Components
+<CardGroup>
+    <Card title="`funding.yaml`" icon="sitemap">
+        This file defines the schema of the knowledge graph. It specifies the types of entities (e.g., `Company`, `Investor`, `FundingRound`) and the relationships between them, creating a structured foundation for VC data.
+    </Card>
+    <Card title="`sources.yaml`" icon="cloud-download">
+        This file is a template for configuring the external data sources you would need to populate the knowledge graph, such as Crunchbase, PitchBook, or other financial data APIs.
+    </Card>
+</CardGroup>
 
--   **`funding.yaml`**: This file defines the schema of our knowledge graph. It specifies the types of entities (e.g., `Company`, `Investor`, `FundingRound`) and the relationships between them.
--   **`sources.yaml`**: This file configures the external data sources.
+<Info>
+  To turn this into a runnable example, you would need to implement a Python script (similar to `infoagent.py` in the stock analysis example) that creates and runs the agent, as well as the functions to interact with your chosen data sources.
+</Info>

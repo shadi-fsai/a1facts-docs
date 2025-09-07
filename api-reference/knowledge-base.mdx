@@ -1,11 +1,13 @@
 ---
 title: "KnowledgeBase"
-description: "The main class for interacting with the a1facts knowledge base."
+description: "The KnowledgeBase class is the main entry point for interacting with the a1facts knowledge base."
 ---
 
-The `KnowledgeBase` class is the main entry point for using `a1facts`.
+The `KnowledgeBase` class is the primary interface for working with `a1facts`. It encapsulates the ontology, the knowledge graph, and the knowledge acquirer, providing a unified access point to all the functionalities of the framework.
 
-### `__init__(self, name: str, ontology_config_file: str, knowledge_sources_config_file: str, use_neo4j: bool = False)`
+To get started, you need to create an instance of the `KnowledgeBase` class, which requires configuration files for the ontology and knowledge sources.
+
+## `__init__`
 
 Initializes a new instance of the `KnowledgeBase` class.
 
@@ -22,47 +24,68 @@ kb = KnowledgeBase(
 ```
 </RequestExample>
 
-**Parameters:**
+### Parameters
 
--   `name` (str): The name of the knowledge base.
--   `ontology_config_file` (str): The path to the ontology configuration file.
--   `knowledge_sources_config_file` (str): The path to the knowledge sources configuration file.
--   `use_neo4j` (bool, optional): Whether to use Neo4j as the backend. Defaults to `False`.
+<ParamField body="name" type="str" required>
+  The name of the knowledge base.
+</ParamField>
+<ParamField body="ontology_config_file" type="str" required>
+  The path to the ontology configuration file.
+</ParamField>
+<ParamField body="knowledge_sources_config_file" type="str" required>
+  The path to the knowledge sources configuration file.
+</ParamField>
+<ParamField body="use_neo4j" type="bool" default="False">
+  If `True`, the knowledge base will use a Neo4j backend. Otherwise, it will use an in-memory graph.
+</ParamField>
 
-### `get_tools(self)`
+---
 
-Returns a list of tools that can be used by an agent to interact with the knowledge base.
+## `get_tools`
+
+Returns a list of tools that can be used by an AI agent to interact with the knowledge base. These tools allow the agent to query for information and acquire new knowledge.
 
 <RequestExample>
 ```python
 tools = kb.get_tools()
+query_tool, acquire_tool = tools
 ```
 </RequestExample>
 
-**Returns:**
+### Returns
 
--   A list of two functions: `query_tool` and `acquire_tool`.
+<ResponseField name="tools" type="list">
+  A list containing two tool functions: `query_tool` and `acquire_tool`.
+</ResponseField>
 
-#### `query_tool(query: str)`
+---
 
-Queries the knowledge graph for precise information.
+### `query_tool`
 
-**Parameters:**
+The `query_tool` allows an agent to retrieve precise information from the knowledge graph by translating a natural language query into a graph traversal.
 
--   `query` (str): The query to send to the knowledge graph.
+**Parameters**
+<ParamField body="query" type="str" required>
+  The natural language query to execute against the knowledge graph.
+</ParamField>
 
-**Returns:**
+**Returns**
+<ResponseField name="result" type="any">
+  The result of the query from the knowledge graph. The type of the result will depend on the query.
+</ResponseField>
 
--   The result from the knowledge graph.
+---
 
-#### `acquire_tool(query: str)`
+### `acquire_tool`
 
-Acquires knowledge from the configured knowledge sources and updates the knowledge graph.
+The `acquire_tool` enables an agent to ingest new information into the knowledge graph from the configured knowledge sources. It takes a query, fetches relevant data, and updates the graph according to the ontology.
 
-**Parameters:**
+**Parameters**
+<ParamField body="query" type="str" required>
+  The query to send to the knowledge acquirer. This will guide the data ingestion process.
+</ParamField>
 
--   `query` (str): The query to send to the knowledge acquirer.
-
-**Returns:**
-
--   The result from the knowledge acquirer.
+**Returns**
+<ResponseField name="result" type="any">
+  The result from the knowledge acquirer, which may include a summary of the ingested data.
+</ResponseField>
