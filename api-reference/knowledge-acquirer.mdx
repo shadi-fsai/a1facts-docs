@@ -20,7 +20,8 @@ kg = KnowledgeGraph(ontology=ontology)
 acquirer = KnowledgeAcquirer(
     graph=kg,
     ontology=ontology,
-    knowledge_sources_config_file="sources.yaml"
+    knowledge_sources_config_file="sources.yaml",
+    disable_exa=False
 )
 ```
 </RequestExample>
@@ -30,6 +31,7 @@ acquirer = KnowledgeAcquirer(
 -   `graph` (KnowledgeGraph): The knowledge graph to be updated.
 -   `ontology` (KnowledgeOntology): The ontology that defines the structure of the knowledge graph.
 -   `knowledge_sources_config_file` (str): The path to the YAML file that configures the knowledge sources.
+-   `disable_exa` (bool): If `True`, the knowledge base will not use Exa search for knowledge acquisition. Defaults to `False`.
 
 ### `acquire(self, query: str)`
 
