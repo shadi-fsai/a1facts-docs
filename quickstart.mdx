@@ -56,6 +56,12 @@ Before you begin, make sure you have the following installed:
             NEO4J_URI="bolt://localhost:7687"
             NEO4J_AUTH="your_neo4j_password"
             ```
+        3.  (Optional) Configure logging by adding the following environment variables:
+            ```dotenv .env
+            # Log levels: 0 = off, 1 = user, 2 = system/user
+            A1FACTS_LOG_LEVEL="1" 
+            A1FACTS_LOG_FILE="a1facts.log"
+            ```
     </Step>
 </Steps>
 
