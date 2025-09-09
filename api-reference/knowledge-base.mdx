@@ -44,6 +44,78 @@ kb = KnowledgeBase(
 
 ---
 
+## `query`
+
+Executes a query against the knowledge graph to retrieve information.
+
+<RequestExample>
+```python
+results = kb.query("What are the main competitors of Apple?")
+```
+</RequestExample>
+
+### Parameters
+
+<ParamField body="query" type="str" required>
+  The query to execute against the knowledge graph.
+</ParamField>
+
+### Returns
+
+<ResponseField name="result" type="str">
+  The result of the query from the knowledge graph.
+</ResponseField>
+
+---
+
+## `ingest_knowledge`
+
+Ingests and integrates a string of new knowledge into the knowledge graph.
+
+<RequestExample>
+```python
+kb.ingest_knowledge("Apple's latest product is the Vision Pro.")
+```
+</RequestExample>
+
+### Parameters
+
+<ParamField body="knowledge" type="str" required>
+  The knowledge to be ingested into the knowledge graph.
+</ParamField>
+
+### Returns
+
+<ResponseField name="result" type="str">
+  The result of the knowledge ingestion operation.
+</ResponseField>
+
+---
+
+## `acquire_knowledge_for_query`
+
+Acquires new knowledge from configured sources based on a query and integrates it into the knowledge graph.
+
+<RequestExample>
+```python
+new_knowledge = kb.acquire_knowledge_for_query("Recent news about Apple's AI strategy")
+```
+</RequestExample>
+
+### Parameters
+
+<ParamField body="query" type="str" required>
+  The query to guide the knowledge acquisition process.
+</ParamField>
+
+### Returns
+
+<ResponseField name="result" type="str">
+  The newly acquired knowledge.
+</ResponseField>
+
+---
+
 ## `get_tools`
 
 Returns a list of tools that can be used by an AI agent to interact with the knowledge base. These tools allow the agent to query for information and acquire new knowledge.
